@@ -1,0 +1,47 @@
+accordion-group is-open="status.open"
+  accordion-heading
+    i.pull-left.glyphicon ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"
+    | &nbsp;
+    = OptionType.model_name.human(count: 1.1)
+  .row ng-controller="OptionTypesController"
+    .col-lg-12
+      //TODO properties list
+      .table-responsive
+        table.table ng-repeat="(tag, tagged_option_typese) in option_types"
+          thead
+            tr
+              td.text-center.bg-info colspan="3"
+                | {{ tag }}
+          tbody
+            tr ng-repeat="option_type in tagged_option_typese"
+              td style="width: 80%"
+                | {{ option_type.name }}
+              td
+                .btn-group.pull-right
+                  / a.btn.btn-sm.btn-info ui-sref="assets.edit({id: asset.id})"
+                  /   i.fa.fa-pencil
+                  a.btn.btn-sm.btn-danger ng-click="destroy(option_type)"
+                    i.fa.fa-times
+
+      form role="form" ng-submit="create()"
+        / .form-group
+        /   ui-select ng-model='option_type'
+        /     ui-select-match placeholder="Выберите из списка существующую товарную опцию ..."
+        /       | {{$select.selected.tag + ' / ' + $select.selected.name}}
+        /     ui-select-choices repeat='ot in global_option_types'
+        /       div ng-bind-html="ot.tag + ' / ' + ot.name | highlight: $select.search"
+        .form-group
+          label for="tag" = OptionType.human_attribute_name(:tag)
+          .row
+            .col-lg-6
+              input#tag.form-control type="text" ng-model="option_type.tag" placeholder="Введите название группы для группировки товарных опций..."
+            .col-lg-6
+              ui-select ng-model='option_type.tag'
+                ui-select-match placeholder="... или выберите из списка"
+                  | {{$select.selected}}
+                ui-select-choices repeat='tag in tags'
+                  div ng-bind-html="tag | highlight: $select.search"
+        .form-group
+          label for="name" = OptionType.human_attribute_name(:name)
+          input#name.form-control type="text" ng-model="option_type.name" ng-required="true"
+        button.btn.btn-default type="submit" = I18n.t(:create_option_type)

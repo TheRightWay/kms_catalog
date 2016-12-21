@@ -1,0 +1,71 @@
+ru:
+  catalog: "Каталог"
+  add_category: "Добавить категорию"
+  update_category: "Обновить категорию"
+  add_product: "Добавить продукт"
+  update_product: "Обновить продукт"
+  create_property: "Создать свойство"
+  create_option_type: "Создать товарную опцию"
+  add_variant: "Добавить вариант"
+  update_variant: "Обновить вариант"
+  add_option_value: "Добавить значение товарное опции"
+  activerecord:
+    models:
+      category:
+        one: "Категория"
+        few: "Категории"
+        many: "Категорий"
+        other: "Категории"
+      product:
+        one: "Продукт"
+        few: "Продукта"
+        many: "Продуктов"
+        other: "Продукты"
+      property:
+        one: "Свойство"
+        few: "Свойства"
+        many: "Свойств"
+        other: "Свойства"
+      option_type:
+        one: "Товарная опция"
+        few: "Товарные опции"
+        many: "Товарных опций"
+        other: "Товарные опции"
+      variant:
+        one: "Вариант"
+        few: "Варианта"
+        many: "Вариантов"
+        other: "Варианты"
+    attributes:
+      category:
+        name: "Название"
+        parent: "Родительская категория"
+        description: "Описание"
+        logo: "Логотип"
+        seo_title: "Title"
+        seo_keywords: "Meta Keywords"
+        seo_description: "Meta Description"
+      product:
+        name: "Название"
+        description: "Описание"
+        price: "Цена"
+        categories: "Категории"
+        preview_image: "Превью"
+        image: "Основное изображение"
+        seo_title: "Title"
+        seo_keywords: "Meta Keywords"
+        seo_description: "Meta Description"
+      property:
+        tag: "Группа/Тэг"
+        name: "Название"
+        value: "Значение"
+      option_type:
+        tag: "Группа/Тэг"
+        name: "Наименование"
+      variant:
+        name: "Название"
+        price: "Цена"
+        image: "Изображение"
+      option_value:
+        option_type: "Товарная опция"
+        value: "Значение"

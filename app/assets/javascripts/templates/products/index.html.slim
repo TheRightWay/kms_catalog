@@ -1,0 +1,22 @@
+.row
+  .col-lg-12
+    .widget
+      .widget-header
+        i.fa.fa-barcode
+        = Product.model_name.human(count: 1.1)
+        /a.pull-right href="#"  Manage
+        a.btn.btn-sm.btn-primary.pull-right ui-sref="products.new"
+          = I18n.t("add_product")
+      .widget-body.no-padding
+        .table-responsive
+          table.table
+            tbody
+              tr ng-repeat="product in products"
+                td style="width: 80%"
+                  | {{ product.name }}
+                td
+                  .btn-group.pull-right
+                    a.btn.btn-sm.btn-info ui-sref="products.edit({id: product.id})"
+                      i.fa.fa-pencil
+                    a.btn.btn-sm.btn-danger ng-click="destroy(product)"
+                      i.fa.fa-times

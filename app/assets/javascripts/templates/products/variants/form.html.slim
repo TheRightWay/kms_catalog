@@ -1,0 +1,18 @@
+.form-group
+  label for="name" = Variant.human_attribute_name(:name)
+  input#name.form-control type="text" ng-model="variant.name" required=""
+/ .form-group
+/   label for="description" = Variant.human_attribute_name(:description)
+/   textarea#description.form-control ng-model="variant.description" rows="15" ng-if="currentUser.admin" ui-codemirror="{lineNumbers: true, mode:'htmlmixed'}"
+  / textarea#description.form-control ng-model="variant.description" rows="15" ng-if="!currentUser.admin" ckeditor='editorOptions'
+.form-group
+  label for="price" = Variant.human_attribute_name(:price)
+  input#price.form-control type="text" ng-model="variant.price"
+.form-group
+  label for="image" = Variant.human_attribute_name(:image)
+  div flow-init="{singleFile: true, headers: setHeaders, fileParameterName: 'variant[image]'}" flow-files-submitted="variant.image = $flow.files[0].file" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-file-success="$file.msg = $message"
+    input type="file" flow-btn="" ng-model='variant.image'
+    div class="thumbnail" ng-show="!$flow.files.length"
+      img ng-src="{{variant.image.url}}"
+    div class="thumbnail" ng-show="$flow.files.length"
+      img flow-img="$flow.files[0]"
