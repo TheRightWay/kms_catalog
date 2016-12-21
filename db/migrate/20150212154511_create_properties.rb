@@ -1,6 +1,6 @@
 class CreateProperties < ActiveRecord::Migration
   def change
-    create_table :properties do |t|
+    create_table :kms_properties do |t|
       t.string :name
       t.string :value
       t.string :tag

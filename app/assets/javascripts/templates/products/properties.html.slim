@@ -2,7 +2,7 @@ accordion-group is-open="status.open"
   accordion-heading
     i.pull-left.glyphicon ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"
     | &nbsp;
-    = Property.model_name.human(count: 1.1)
+    = Kms::Property.model_name.human(count: 1.1)
   .row ng-controller="PropertiesController"
     .col-lg-12
       //TODO properties list
@@ -33,7 +33,7 @@ accordion-group is-open="status.open"
                     i.fa.fa-times
       form role="form" ng-submit="create()"
         .form-group
-          label for="tag" = Property.human_attribute_name(:tag)
+          label for="tag" = Kms::Property.human_attribute_name(:tag)
           .row
             .col-lg-6
               input#tag.form-control type="text" ng-model="property.tag" placeholder="Введите название группы для группировки свойств..."
@@ -44,9 +44,9 @@ accordion-group is-open="status.open"
                 ui-select-choices repeat='tag in tags'
                   div ng-bind-html="tag | highlight: $select.search"
         .form-group
-          label for="name" = Property.human_attribute_name(:name)
+          label for="name" = Kms::Property.human_attribute_name(:name)
           input#name.form-control type="text" ng-model="property.name" ng-required="true"
         .form-group
-          label for="value" = Property.human_attribute_name(:value)
+          label for="value" = Kms::Property.human_attribute_name(:value)
           input#name.form-control type="text" ng-model="property.value" ng-required="true"
         button.btn.btn-default type="submit" = I18n.t(:create_property)

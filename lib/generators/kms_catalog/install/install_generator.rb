@@ -10,7 +10,7 @@ module KmsCatalog
     end
 
     def insert_javascript
-      append_file "app/assets/javascripts/application.js", "//= require catalog/application\n"
+      append_file "app/assets/javascripts/application.js", "//= require kms_catalog/application\n"
     end
 
   end

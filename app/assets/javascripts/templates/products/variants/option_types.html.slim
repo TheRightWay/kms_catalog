@@ -2,7 +2,7 @@ accordion-group is-open="status.open"
   accordion-heading
     i.pull-left.glyphicon ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"
     | &nbsp;
-    = OptionType.model_name.human(count: 1.1)
+    = Kms::OptionType.model_name.human(count: 1.1)
   .row ng-controller="OptionValuesController"
     .col-lg-12
       //TODO properties list
@@ -27,13 +27,13 @@ accordion-group is-open="status.open"
 
       form role="form" ng-submit="create()"
         .form-group
-          label for="option_type_id" = OptionValue.human_attribute_name(:option_type)
+          label for="option_type_id" = Kms::OptionValue.human_attribute_name(:option_type)
           ui-select ng-model='option_value.option_type_id'
             ui-select-match placeholder="Выберите из списка товарную опцию"
               | {{$select.selected.tag + ' / ' + $select.selected.name}}
             ui-select-choices repeat='ot.id as ot in available_option_types'
               div ng-bind-html="ot.tag + ' / ' + ot.name | highlight: $select.search"
         .form-group
-          label for="value" = OptionValue.human_attribute_name(:value)
+          label for="value" = Kms::OptionValue.human_attribute_name(:value)
           input#name.form-control type="text" ng-model="option_value.value" ng-required="true"
         button.btn.btn-default type="submit" = I18n.t(:add_option_value)

@@ -3,7 +3,7 @@
     .widget
       .widget-header
         i.fa.fa-barcode
-        = Variant.model_name.human(count: 1.1)
+        = Kms::Variant.model_name.human(count: 1.1)
         /a.pull-right href="#"  Manage
         a.btn.btn-sm.btn-primary.pull-right ui-sref="variants.new"
           = I18n.t("add_variant")

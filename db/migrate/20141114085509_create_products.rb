@@ -1,6 +1,6 @@
 class CreateProducts < ActiveRecord::Migration
   def change
-    create_table :products do |t|
+    create_table :kms_products do |t|
       t.string :name
       t.text :description
       t.decimal :price, precision: 8, scale: 2

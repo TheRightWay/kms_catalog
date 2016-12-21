@@ -1,4 +1,4 @@
 Kms::AbilityService.register do
-  can :manage, Category
-  can :manage, Product
+  can :manage, Kms::Category
+  can :manage, Kms::Product
 end

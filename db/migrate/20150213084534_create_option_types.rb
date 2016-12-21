@@ -1,6 +1,6 @@
 class CreateOptionTypes < ActiveRecord::Migration
   def change
-    create_table :option_types do |t|
+    create_table :kms_option_types do |t|
       t.string :tag
       t.string :name
 

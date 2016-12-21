@@ -1,15 +1,15 @@
 .form-group
-  label for="name" = Product.human_attribute_name(:name)
+  label for="name" = Kms::Product.human_attribute_name(:name)
   input#name.form-control type="text" ng-model="product.name" required=""
 .form-group
-  label for="description" = Product.human_attribute_name(:description)
+  label for="description" = Kms::Product.human_attribute_name(:description)
   textarea#description.form-control ng-model="product.description" rows="15" ng-if="currentUser.admin" ui-codemirror="{lineNumbers: true, mode:'htmlmixed'}"
   textarea#description.form-control ng-model="product.description" rows="15" ng-if="!currentUser.admin" ckeditor='editorOptions'
 .form-group
-  label for="price" = Product.human_attribute_name(:price)
+  label for="price" = Kms::Product.human_attribute_name(:price)
   input#price.form-control type="text" ng-model="product.price"
 .form-group
-  label for="category_ids" = Product.human_attribute_name(:categories)
+  label for="category_ids" = Kms::Product.human_attribute_name(:categories)
   /select#categories_ids.form-control.ui-select-multiple ng-model="category.categories_ids" ng-options="category.id as category.name for category in categories" required=""
   ui-select multiple="" ng-model="product.category_ids" theme="bootstrap" on-select="addCat($item, $model)" on-remove='removeCat($item, $model)'
     ui-select-match placeholder="Выберите категории..."
@@ -17,7 +17,7 @@
     ui-select-choices repeat="category.id as category in categories"
       div ng-bind-html="category.name | highlight: $select.search"
 .form-group
-  label for="image" = Product.human_attribute_name(:image)
+  label for="image" = Kms::Product.human_attribute_name(:image)
   div flow-init="{singleFile: true, headers: setHeaders, fileParameterName: 'product[image]'}" flow-files-submitted="product.image = $flow.files[0].file" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-file-success="$file.msg = $message"
     input type="file" flow-btn="" ng-model='product.image'
     div class="thumbnail" ng-show="!$flow.files.length"
@@ -25,7 +25,7 @@
     div class="thumbnail" ng-show="$flow.files.length"
       img flow-img="$flow.files[0]"
 .form-group
-  label for="preview_image" = Product.human_attribute_name(:preview_image)
+  label for="preview_image" = Kms::Product.human_attribute_name(:preview_image)
   div flow-init="{singleFile: true, headers: setHeaders, fileParameterName: 'product[preview_image]'}" flow-files-submitted="product.preview_image = $flow.files[0].file" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-file-success="$file.msg = $message"
     input type="file" flow-btn="" ng-model='product.preview_image'
     div class="thumbnail" ng-show="!$flow.files.length"
@@ -38,11 +38,11 @@ accordion close-others="true"
       i.pull-left.glyphicon ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"
       | &nbsp;SEO
     .form-group
-      label for="seo_title" = Product.human_attribute_name(:seo_title)
+      label for="seo_title" = Kms::Product.human_attribute_name(:seo_title)
       input#seo_title.form-control type="text" ng-model="product.seo_title"
     .form-group
-      label for="seo_keywords" = Product.human_attribute_name(:seo_keywords)
+      label for="seo_keywords" = Kms::Product.human_attribute_name(:seo_keywords)
       input#seo_keywords.form-control type="text" ng-model="product.seo_keywords"
     .form-group
-      label for="seo_description" = Product.human_attribute_name(:seo_description)
+      label for="seo_description" = Kms::Product.human_attribute_name(:seo_description)
       input#seo_description.form-control type="text" ng-model="product.seo_description"

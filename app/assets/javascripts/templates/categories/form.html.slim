@@ -1,15 +1,15 @@
 .form-group
-  label for="name" = Category.human_attribute_name(:name)
+  label for="name" = Kms::Category.human_attribute_name(:name)
   input#name.form-control type="text" ng-model="category.name"
 .form-group
-  label for="parent_id" = Category.human_attribute_name(:parent)
+  label for="parent_id" = Kms::Category.human_attribute_name(:parent)
   select#parent_id.form-control ng-model="category.parent_id" ng-options="category.id as category.name for category in categories"
 .form-group
-  label for="description" = Category.human_attribute_name(:description)
+  label for="description" = Kms::Category.human_attribute_name(:description)
   textarea#description.form-control ng-model="category.description" rows="15" ng-if="currentUser.admin" ui-codemirror="{lineNumbers: true, mode:'htmlmixed'}"
   textarea#description.form-control ng-model="category.description" rows="15" ng-if="!currentUser.admin" ckeditor='editorOptions'
 .form-group
-  label for="logo" = Category.human_attribute_name(:logo)
+  label for="logo" = Kms::Category.human_attribute_name(:logo)
   div flow-init="{singleFile: true, headers: setHeaders, fileParameterName: 'category[logo]'}" flow-files-submitted="category.logo = $flow.files[0].file" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-file-success="$file.msg = $message"
     input type="file" flow-btn="" ng-model='category.logo'
     div class="thumbnail" ng-show="!$flow.files.length"
@@ -22,11 +22,11 @@ accordion close-others="true"
       i.pull-left.glyphicon ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"
       | &nbsp;SEO
     .form-group
-      label for="seo_title" = Category.human_attribute_name(:seo_title)
+      label for="seo_title" = Kms::Category.human_attribute_name(:seo_title)
       input#seo_title.form-control type="text" ng-model="category.seo_title"
     .form-group
-      label for="seo_keywords" = Category.human_attribute_name(:seo_keywords)
+      label for="seo_keywords" = Kms::Category.human_attribute_name(:seo_keywords)
       input#seo_keywords.form-control type="text" ng-model="category.seo_keywords"
     .form-group
-      label for="seo_description" = Category.human_attribute_name(:seo_description)
+      label for="seo_description" = Kms::Category.human_attribute_name(:seo_description)
       input#seo_description.form-control type="text" ng-model="category.seo_description"
