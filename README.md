@@ -28,6 +28,11 @@ Provides catalog functionality for KMS website - Categories, Products, Variants,
 
 6. Restart KMS instance
 
+## Getting started
+Please watch this video to start using KMS Catalog:
+
+[![Getting started with KMS Catalog extension](http://img.youtube.com/vi/fT5sEgn6r5s/0.jpg)](https://youtu.be/fT5sEgn6r5s "Getting started with KMS Catalog extension")
+
 ## Contributing
 
 Please follow [CONTRIBUTING.md](CONTRIBUTING.md).
