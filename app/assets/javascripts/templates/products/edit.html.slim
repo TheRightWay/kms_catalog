@@ -10,3 +10,16 @@
 accordion close-others="true"
   ng-include src="'products/properties.html'"
   ng-include src="'products/option_types.html'"
+  accordion-group is-open="status.open"
+    accordion-heading
+      i.pull-left.glyphicon ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"
+      | &nbsp;SEO
+    .form-group
+      label for="seo_title" = Kms::Product.human_attribute_name(:seo_title)
+      input#seo_title.form-control type="text" ng-model="product.seo_title"
+    .form-group
+      label for="seo_keywords" = Kms::Product.human_attribute_name(:seo_keywords)
+      input#seo_keywords.form-control type="text" ng-model="product.seo_keywords"
+    .form-group
+      label for="seo_description" = Kms::Product.human_attribute_name(:seo_description)
+      input#seo_description.form-control type="text" ng-model="product.seo_description"

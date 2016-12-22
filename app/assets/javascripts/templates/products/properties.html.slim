@@ -36,10 +36,10 @@ accordion-group is-open="status.open"
           label for="tag" = Kms::Property.human_attribute_name(:tag)
           .row
             .col-lg-6
-              input#tag.form-control type="text" ng-model="property.tag" placeholder="Введите название группы для группировки свойств..."
+              input#tag.form-control type="text" ng-model="property.tag" placeholder=I18n.t(:type_group_name_for_properties_placeholder)
             .col-lg-6
               ui-select ng-model='property.tag'
-                ui-select-match placeholder="... или выберите из списка"
+                ui-select-match placeholder=I18n.t(:or_select_from_list_placeholder)
                   | {{$select.selected}}
                 ui-select-choices repeat='tag in tags'
                   div ng-bind-html="tag | highlight: $select.search"

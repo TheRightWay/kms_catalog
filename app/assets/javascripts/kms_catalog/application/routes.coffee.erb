@@ -8,7 +8,7 @@ angular.module('KMS').config ['$stateProvider', '$urlRouterProvider', ($statePro
             url: '/kms/categories',
             views:
               "header":
-                template: "Категории"
+                template: "<%= Kms::Category.model_name.human(count: 1.1) %>"
               "@":
                 controller: 'CategoriesController',
                 controllerAs: 'categories',
@@ -18,7 +18,7 @@ angular.module('KMS').config ['$stateProvider', '$urlRouterProvider', ($statePro
             url: '/new',
             views:
               "header@":
-                template: "Новая Категория"
+                template: "<%= I18n.t(:new_category) %>"
               "@":
                 controller: 'CategoriesController',
                 controllerAs: 'categories',
@@ -28,7 +28,7 @@ angular.module('KMS').config ['$stateProvider', '$urlRouterProvider', ($statePro
             url: '/:id/edit',
             views:
               "header@":
-                template: "Редактирование Категории"
+                template: "<%= I18n.t(:edit_category) %>"
               "@":
                 controller: 'CategoriesController',
                 controllerAs: 'categories',
@@ -38,7 +38,7 @@ angular.module('KMS').config ['$stateProvider', '$urlRouterProvider', ($statePro
             url: '/kms/products',
             views:
               "header":
-                template: "Продукты"
+                template: "<%= Kms::Product.model_name.human(count: 1.1) %>"
               "@":
                 controller: 'ProductsController',
                 controllerAs: 'products',
@@ -48,7 +48,7 @@ angular.module('KMS').config ['$stateProvider', '$urlRouterProvider', ($statePro
             url: '/new',
             views:
               "header@":
-                template: "Новый Продукт"
+                template: "<%= I18n.t(:new_product) %>"
               "@":
                 controller: 'ProductsController',
                 controllerAs: 'products',
@@ -58,7 +58,7 @@ angular.module('KMS').config ['$stateProvider', '$urlRouterProvider', ($statePro
             url: '/:id/edit',
             views:
               "header@":
-                template: "Редактирование Продукта"
+                template: "<%= I18n.t(:edit_product) %>"
               "@":
                 controller: 'ProductsController',
                 controllerAs: 'products',
@@ -68,7 +68,7 @@ angular.module('KMS').config ['$stateProvider', '$urlRouterProvider', ($statePro
           url: '/kms/products/:product_id/variants',
           views:
             "header":
-              template: "Варианты"
+              template: "<%= Kms::Variant.model_name.human(count: 1.1) %>"
             "@":
               controller: 'VariantsController',
               controllerAs: 'variants',
@@ -78,7 +78,7 @@ angular.module('KMS').config ['$stateProvider', '$urlRouterProvider', ($statePro
           url: '/new',
           views:
             "header@":
-              template: "Новый Вариант"
+              template: "<%= I18n.t(:new_variant) %>"
             "@":
               controller: 'VariantsController',
               controllerAs: 'variants',
@@ -88,7 +88,7 @@ angular.module('KMS').config ['$stateProvider', '$urlRouterProvider', ($statePro
           url: '/:id/edit',
           views:
             "header@":
-              template: "Редактирование Варианта"
+              template: "<%= I18n.t(:edit_variant) %>"
             "@":
               controller: 'VariantsController',
               controllerAs: 'variants',

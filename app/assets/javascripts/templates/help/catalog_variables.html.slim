@@ -1,0 +1,75 @@
+h4 = I18n.t("liquor_help.variables_title")
+p
+  ul
+    li
+      var categories
+      p
+        span = I18n.t('liquor_help.variables.categories.main_description')
+      p
+        code
+          | {% for category in: categories do: %}
+      p
+        table.table
+          tr
+            th #{ I18n.t('liquor_help.properties') } Category
+            th = I18n.t('liquor_help.description')
+          tr
+            td name
+            td = I18n.t('liquor_help.variables.categories.properties.name')
+          tr
+            td permalink
+            td = I18n.t('liquor_help.variables.categories.properties.permalink')
+          tr
+            td description
+            td = I18n.t('liquor_help.variables.categories.properties.description')
+          tr
+            td logo_url
+            td = I18n.t('liquor_help.variables.categories.properties.logo_url')
+          tr
+            td children
+            td = I18n.t('liquor_help.variables.categories.properties.children')
+          tr
+            td parent
+            td = I18n.t('liquor_help.variables.categories.properties.parent')
+          tr
+            td products
+            td = I18n.t('liquor_help.variables.categories.properties.products')
+    li
+      var products
+      p
+        span = I18n.t('liquor_help.variables.products.main_description')
+      p
+        code
+          | {% for product in: products do: %}
+      p
+        table.table
+          tr
+            th #{ I18n.t('liquor_help.properties') } Product
+            th = I18n.t('liquor_help.description')
+          tr
+            td name
+            td = I18n.t('liquor_help.variables.products.properties.name')
+          tr
+            td description
+            td = I18n.t('liquor_help.variables.products.properties.description')
+          tr
+            td price
+            td = I18n.t('liquor_help.variables.products.properties.price')
+          tr
+            td permalink
+            td = I18n.t('liquor_help.variables.products.properties.permalink')
+          tr
+            td categories
+            td = I18n.t('liquor_help.variables.products.properties.categories')
+          tr
+            td image_url
+            td = I18n.t('liquor_help.variables.products.properties.image_url')
+          tr
+            td preview_image_url
+            td = I18n.t('liquor_help.variables.products.properties.preview_image_url')
+          tr
+            td variants
+            td = I18n.t('liquor_help.variables.products.properties.variants')
+          tr
+            td properties
+            td = I18n.t('liquor_help.variables.products.properties.properties')

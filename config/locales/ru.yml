@@ -1,43 +1,74 @@
 ru:
   catalog: "Каталог"
+  new_category: "Новая Категория"
   add_category: "Добавить категорию"
   update_category: "Обновить категорию"
+  new_product: "Новый Продукт"
   add_product: "Добавить продукт"
   update_product: "Обновить продукт"
   create_property: "Создать свойство"
   create_option_type: "Создать товарную опцию"
+  new_variant: "Новый Вариант"
   add_variant: "Добавить вариант"
   update_variant: "Обновить вариант"
   add_option_value: "Добавить значение товарное опции"
+  type_group_name_for_options_placeholder: "Введите название группы для группировки товарных опций..."
+  type_group_name_for_properties_placeholder: "Введите название группы для группировки свойств..."
+  or_select_from_list_placeholder: "... или выберите из списка"
+  select_option_type_from_list_placeholder: "Выберите из списка товарную опцию"
+  liquor_help:
+    variables:
+      categories:
+        main_description: '"categories" возвращает коллекцию категорий, созданных в разделе "Категории":&nbsp;'
+        properties:
+          name: 'Название'
+          permalink: 'Ссылка'
+          description: 'Описание'
+          logo_url: 'URL лого'
+          children: 'Дочерние категории'
+          parent: 'Родительская категория'
+          products: 'Продукты'
+      products:
+        main_description: '"products" возвращает коллекцию товаров, созданных в разделе "Продукты":&nbsp;'
+        properties:
+          name: 'Название'
+          price: 'Цена'
+          permalink: 'Ссылка'
+          description: 'Описание'
+          image_url: 'URL изображения'
+          preview_image_url: 'URL изображения-превью'
+          categories: 'Категории'
+          variants: 'Варианты'
+          properties: 'Свойства'
   activerecord:
     models:
-      category:
+      kms/category:
         one: "Категория"
         few: "Категории"
         many: "Категорий"
         other: "Категории"
-      product:
+      kms/product:
         one: "Продукт"
         few: "Продукта"
         many: "Продуктов"
         other: "Продукты"
-      property:
+      kms/property:
         one: "Свойство"
         few: "Свойства"
         many: "Свойств"
         other: "Свойства"
-      option_type:
+      kms/option_type:
         one: "Товарная опция"
         few: "Товарные опции"
         many: "Товарных опций"
         other: "Товарные опции"
-      variant:
+      kms/variant:
         one: "Вариант"
         few: "Варианта"
         many: "Вариантов"
         other: "Варианты"
     attributes:
-      category:
+      kms/category:
         name: "Название"
         parent: "Родительская категория"
         description: "Описание"
@@ -45,7 +76,7 @@ ru:
         seo_title: "Title"
         seo_keywords: "Meta Keywords"
         seo_description: "Meta Description"
-      product:
+      kms/product:
         name: "Название"
         description: "Описание"
         price: "Цена"
@@ -55,17 +86,17 @@ ru:
         seo_title: "Title"
         seo_keywords: "Meta Keywords"
         seo_description: "Meta Description"
-      property:
+      kms/property:
         tag: "Группа/Тэг"
         name: "Название"
         value: "Значение"
-      option_type:
+      kms/option_type:
         tag: "Группа/Тэг"
         name: "Наименование"
-      variant:
+      kms/variant:
         name: "Название"
         price: "Цена"
         image: "Изображение"
-      option_value:
+      kms/option_value:
         option_type: "Товарная опция"
         value: "Значение"

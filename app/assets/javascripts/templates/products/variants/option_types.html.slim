@@ -29,7 +29,7 @@ accordion-group is-open="status.open"
         .form-group
           label for="option_type_id" = Kms::OptionValue.human_attribute_name(:option_type)
           ui-select ng-model='option_value.option_type_id'
-            ui-select-match placeholder="Выберите из списка товарную опцию"
+            ui-select-match placeholder=I18n.t(:select_option_type_from_list_placeholder)
               | {{$select.selected.tag + ' / ' + $select.selected.name}}
             ui-select-choices repeat='ot.id as ot in available_option_types'
               div ng-bind-html="ot.tag + ' / ' + ot.name | highlight: $select.search"
