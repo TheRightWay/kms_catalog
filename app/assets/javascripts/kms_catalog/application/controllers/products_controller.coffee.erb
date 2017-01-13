@@ -1,0 +1,98 @@
+ProductsController = ($scope, $state, $cookieStore, Restangular, $stateParams, Alertify, ErrorsService) ->
+  $scope.editorOptions =
+    filebrowserUploadUrl: '/assets/ckeditor'
+
+  Restangular.all('users').customGET('kms_user').then (current_user) ->
+    $scope.currentUser = current_user
+    $scope.currentUser.admin = $scope.currentUser.role == 'admin'
+
+  $scope.categories = []
+  Restangular.all('categories').getList().then (categories)->
+    $scope.categories = categories
+  $scope.store = Restangular.all('products')
+  $scope.store.getList().then (products)->
+    $scope.products = products
+
+
+  if $stateParams.id
+    $scope.variantsStore = Restangular.one('products', $stateParams.id).all('variants')
+    $scope.store.get($stateParams.id).then (product)->
+      $scope.product = product
+  else
+    $scope.product = {category_ids: []}
+
+  $scope.variant = {}
+
+  $scope.addCat = (item, model) ->
+    index = $scope.product.category_ids.indexOf(item.id)
+    unless index > -1
+      $scope.product.category_ids.push(item.id)
+  $scope.removeCat = (item, model) ->
+    index = $scope.product.category_ids.indexOf(item.id)
+    if index > -1
+      $scope.product.category_ids.splice(index, 1)
+
+  $scope.create = ->
+    fd = new FormData
+    fd.append('product[name]', $scope.product.name || '')
+    fd.append('product[description]', $scope.product.description || '')
+    fd.append('product[master_attributes][price]', $scope.product.master.price || '')
+    fd.append('product[category_ids]', $scope.product.category_ids)
+    fd.append('product[master_attributes][image]', $scope.product.master.image)
+    fd.append('product[seo_title]', $scope.product.seo_title || '')
+    fd.append('product[seo_keywords]', $scope.product.seo_keywords || '')
+    fd.append('product[seo_description]', $scope.product.seo_description || '')
+    $scope.store.withHttpConfig({ transformRequest: angular.identity }).post(fd, null, {"Content-Type": undefined}).then (product)->
+      $scope.product = product
+      $state.go('products.edit', {id: $scope.product.id })
+    ,(response)->
+      Alertify.error(ErrorsService.prepareErrorsString(response.data.errors))
+
+  $scope.update = ->
+    fd = new FormData
+    fd.append('product[name]', $scope.product.name || '')
+    fd.append('product[description]', $scope.product.description || '')
+    fd.append('product[master_attributes][id]', $scope.product.master.id || '')
+    fd.append('product[master_attributes][price]', $scope.product.master.price || '')
+    fd.append('product[category_ids]', $scope.product.category_ids)
+    fd.append('product[seo_title]', $scope.product.seo_title || '')
+    fd.append('product[seo_keywords]', $scope.product.seo_keywords || '')
+    fd.append('product[seo_description]', $scope.product.seo_description || '')
+    if $scope.product.master.image.constructor.name == "File"
+      fd.append('product[master_attributes][image]', $scope.product.master.image)
+    $scope.product.withHttpConfig({ transformRequest: angular.identity }).post('', fd, '', {"Content-Type": undefined}).then ->
+      $state.go('products.edit')
+    ,(response)->
+      Alertify.error(ErrorsService.prepareErrorsString(response.data.errors))
+
+  $scope.createVariant = ->
+    fd = new FormData
+    fd.append('variant[name]', $scope.variant.name || '')
+    fd.append('variant[price]', $scope.variant.price || '')
+    fd.append('variant[image]', $scope.variant.image)
+    $scope.variantsStore.withHttpConfig({ transformRequest: angular.identity }).post(fd, null, {"Content-Type": undefined}).then (variant)->
+      $scope.variant = {}
+      $scope.product.variants.push(variant)
+    ,(response)->
+      Alertify.error(ErrorsService.prepareErrorsString(response.data.errors))
+
+  $scope.destroyVariant = (variant)->
+    if(confirm('<%= I18n.t(:are_you_sure) %>'))
+      restangular_variant = Restangular.restangularizeElement($scope.product, variant, 'variants')
+      restangular_variant.remove().then ->
+        $scope.product.variants = _.without($scope.product.variants, variant)
+
+  $scope.destroy = (product)->
+    if(confirm('<%= I18n.t(:are_you_sure) %>'))
+      product.remove().then ->
+        $scope.products = _.without($scope.products, product)
+
+  $scope.exceptCurrentCategory = ->
+    new_products = []
+    for p in $scope.products
+      new_products.push(p) if p.id != ($scope.product && $scope.product.id)
+    new_products
+
+
+angular.module('KMS')
+    .controller('ProductsController', ['$scope', '$state', '$cookieStore', 'Restangular', '$stateParams', 'Alertify', 'ErrorsService', ProductsController])

@@ -33,7 +33,7 @@ accordion-group is-open="status.open"
         .form-group
           label for="tag" = Kms::OptionType.human_attribute_name(:tag)
           .row
-            .col-lg-6
+            .col-lg-6 style="padding-left:0"
               input#tag.form-control type="text" ng-model="option_type.tag" placeholder=I18n.t(:type_group_name_for_options_placeholder)
             .col-lg-6
               ui-select ng-model='option_type.tag'

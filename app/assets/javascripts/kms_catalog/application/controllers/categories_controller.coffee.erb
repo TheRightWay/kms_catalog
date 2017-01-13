@@ -1,0 +1,64 @@
+CategoriesController = ($scope, $state, $cookieStore, Restangular, $stateParams) ->
+  $scope.editorOptions =
+    filebrowserUploadUrl: '/assets/ckeditor'
+  $scope.store = Restangular.all('categories')
+
+  Restangular.all('users').customGET('kms_user').then (current_user) ->
+    $scope.currentUser = current_user
+    $scope.currentUser.admin = $scope.currentUser.role == 'admin'
+
+  $scope.exceptCurrentCategory = ->
+    new_categories = []
+    for p in $scope.categories
+      new_categories.push(p) if p.id != parseInt($stateParams.id)
+    new_categories
+
+  $scope.store.getList().then (categories)->
+    $scope.categories = categories
+    if $stateParams.id
+      $scope.categories = $scope.exceptCurrentCategory()
+
+  if $stateParams.id
+    $scope.store.get($stateParams.id).then (category)->
+      $scope.category = category
+  else
+    $scope.category = {}
+
+  $scope.create = ->
+    fd = new FormData
+    fd.append('category[name]', $scope.category.name || '')
+    fd.append('category[parent_id]', $scope.category.parent_id || '')
+    fd.append('category[description]', $scope.category.description || '')
+    fd.append('category[seo_title]', $scope.category.seo_title || '')
+    fd.append('category[seo_keywords]', $scope.category.seo_keywords || '')
+    fd.append('category[seo_description]', $scope.category.seo_description || '')
+    fd.append('category[logo]', $scope.category.logo)
+    $scope.store.withHttpConfig({ transformRequest: angular.identity }).post(fd, null, {"Content-Type": undefined}).then ->
+      $state.go('categories')
+    ,->
+      console.log('bug')
+
+  $scope.update = ->
+    fd = new FormData
+    fd.append('category[name]', $scope.category.name || '')
+    fd.append('category[parent_id]', $scope.category.parent_id || '')
+    fd.append('category[description]', $scope.category.description || '')
+    fd.append('category[seo_title]', $scope.category.seo_title || '')
+    fd.append('category[seo_keywords]', $scope.category.seo_keywords || '')
+    fd.append('category[seo_description]', $scope.category.seo_description || '')
+    if $scope.category.logo.constructor.name == "File"
+      fd.append('category[logo]', $scope.category.logo)
+    $scope.category.withHttpConfig({ transformRequest: angular.identity }).post('', fd, '', {"Content-Type": undefined}).then ->
+      $state.go('categories')
+    ,->
+      console.log('bug')
+
+  $scope.destroy = (category)->
+    if(confirm('<%= I18n.t(:are_you_sure) %>'))
+      category.remove().then ->
+        $scope.categories = _.without($scope.categories, category)
+
+
+
+angular.module('KMS')
+    .controller('CategoriesController', ['$scope', '$state', '$cookieStore', 'Restangular', '$stateParams', CategoriesController])

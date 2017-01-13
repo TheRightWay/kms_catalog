@@ -1,22 +1,20 @@
 .row
   .col-lg-12
-    .widget
-      .widget-header
-        i.fa.fa-barcode
-        = Kms::Variant.model_name.human(count: 1.1)
-        /a.pull-right href="#"  Manage
-        a.btn.btn-sm.btn-primary.pull-right ui-sref="variants.new"
-          = I18n.t("add_variant")
-      .widget-body.no-padding
-        .table-responsive
-          table.table
-            tbody
-              tr ng-repeat="variant in variants"
-                td style="width: 80%"
-                  | {{ variant.name }}
-                td
-                  .btn-group.pull-right
-                    a.btn.btn-sm.btn-info ui-sref="variants.edit({id: variant.id})"
-                      i.fa.fa-pencil
-                    a.btn.btn-sm.btn-danger ng-click="destroy(variant)"
-                      i.fa.fa-times
+    ng-include src="'products/variants/new.html'"
+  .col-lg-12
+    .table-responsive
+      table.table
+        tbody
+          tr ng-repeat="variant in product.variants"
+            td style="width: 10%"
+              img.img-responsive ng-src="{{ variant.image.url }}"
+            td style="width: 70%"
+              | {{ variant.name }}
+            td style="width: 10%"
+              | {{ variant.price }}
+            td
+              .btn-group.pull-right
+                a.btn.btn-sm.btn-info ui-sref="variants.edit({product_id: product.id, id: variant.id})"
+                  i.fa.fa-pencil
+                a.btn.btn-sm.btn-danger ng-click="destroyVariant(variant)"
+                  i.fa.fa-times

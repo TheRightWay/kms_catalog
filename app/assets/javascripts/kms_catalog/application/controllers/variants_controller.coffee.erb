@@ -1,0 +1,22 @@
+VariantsController = ($scope, $state, $cookieStore, Restangular, $stateParams, Alertify, ErrorsService) ->
+  $scope.store = Restangular.one('products', $stateParams.product_id).all('variants')
+  # $scope.store.getList().then (variants) ->
+  #    $scope.variants = variants#_.groupBy(option_types, 'tag')
+
+  $scope.store.get($stateParams.id).then (variant)->
+    $scope.variant = variant
+
+  $scope.update = ->
+    fd = new FormData
+    fd.append('variant[name]', $scope.variant.name || '')
+    fd.append('variant[price]', $scope.variant.price || '')
+    if $scope.variant.image.constructor.name == "File"
+      fd.append('variant[image]', $scope.variant.image)
+    $scope.variant.withHttpConfig({ transformRequest: angular.identity }).post('', fd, '', {"Content-Type": undefined}).then ->
+      $state.go('products.edit', {id: $scope.variant.product_id})
+    ,(response)->
+      Alertify.error(ErrorsService.prepareErrorsString(response.data.errors))
+
+
+angular.module('KMS')
+    .controller('VariantsController', ['$scope', '$state', '$cookieStore', 'Restangular', '$stateParams', 'Alertify', 'ErrorsService', VariantsController])
