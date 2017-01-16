@@ -4,24 +4,20 @@ module Kms
     attributes :name, :description, :price, :permalink
     has_many :children
     has_many :categories
+    has_one :master
     has_many :variants
     # has_many :properties
 
     export :image_url
-    export :preview_image_url
     export :properties
     scopes :order
 
     def image_url
-      source.image.url
-    end
-
-    def preview_image_url
-      source.preview_image.url
+      source.master.image.url
     end
 
     def price
-      source.price.to_s
+      source.master.price.to_s
     end
 
     def properties

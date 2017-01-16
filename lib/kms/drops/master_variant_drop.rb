@@ -1,7 +1,6 @@
 module Kms
-  class VariantDrop < Liquor::Drop
+  class MasterVariantDrop < VariantDrop
     attributes :id, :name, :price
-    has_many :option_values
     export :image_url
 
     def image_url
