@@ -22,7 +22,7 @@ ru:
   liquor_help:
     variables:
       categories:
-        main_description: '"categories" возвращает коллекцию категорий, созданных в разделе "Категории":&nbsp;'
+        main_description: '"categories" возвращает коллекцию категорий, созданных в разделе "Категории":'
         properties:
           name: 'Название'
           permalink: 'Ссылка'
@@ -32,7 +32,7 @@ ru:
           parent: 'Родительская категория'
           products: 'Продукты'
       products:
-        main_description: '"products" возвращает коллекцию товаров, созданных в разделе "Продукты":&nbsp;'
+        main_description: '"products" возвращает коллекцию товаров, созданных в разделе "Продукты":'
         properties:
           name: 'Название'
           price: 'Цена'

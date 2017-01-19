@@ -22,7 +22,7 @@ en:
   liquor_help:
     variables:
       categories:
-        main_description: '"categories" returns collection of categories created in "Categories" section:&nbsp;'
+        main_description: '"categories" returns collection of categories created in "Categories" section:'
         properties:
           name: 'Category name'
           permalink: 'Permalink for generating link to category page'
@@ -32,7 +32,7 @@ en:
           parent: 'Parent category'
           products: 'Products'
       products:
-        main_description: '"products" returns collection of products created in "Products" section:&nbsp;'
+        main_description: '"products" returns collection of products created in "Products" section:'
         properties:
           name: 'Product name'
           price: 'Price'
