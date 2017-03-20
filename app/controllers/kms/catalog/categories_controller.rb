@@ -2,7 +2,7 @@ module Kms
   module Catalog
     class CategoriesController < ApplicationController
       def index
-        render json: Category.order(:name).to_json(methods: :parent_id, except: :ancestry)
+        render json: Category.order(:position).to_json(methods: :parent_id, except: :ancestry)
       end
 
       def create

@@ -9,9 +9,10 @@
       .widget-body.no-padding
         .table-responsive
           table.table
-            tbody
-              tr ng-repeat="category in categories"
+            tbody as-sortable="categoriesSortableOptions" ng-model="categories"
+              tr ng-repeat="category in categories" as-sortable-item=""
                 td style="width: 80%"
+                  i.fa.fa-bars as-sortable-item-handle="" &nbsp;
                   | {{ category.name }}
                 td
                   .btn-group.pull-right

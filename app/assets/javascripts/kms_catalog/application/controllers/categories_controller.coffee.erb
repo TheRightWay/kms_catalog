@@ -1,6 +1,11 @@
 CategoriesController = ($scope, $state, $cookieStore, Restangular, $stateParams) ->
   $scope.editorOptions =
     filebrowserUploadUrl: '/assets/ckeditor'
+  $scope.categoriesSortableOptions =
+    orderChanged: (event)->
+      for category, index in event.dest.sortableScope.modelValue
+        category.patch(position: index)
+
   $scope.store = Restangular.all('categories')
 
   Restangular.all('users').customGET('kms_user').then (current_user) ->
