@@ -3,7 +3,7 @@ module Kms
     include Kms::Catalog::Engine.routes.url_helpers
     attributes :name, :permalink, :description
     has_many :children
-    has_many :products
+    has_many :products, include: :master
     belongs_to :parent
 
     export :logo_url

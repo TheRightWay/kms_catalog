@@ -27,5 +27,21 @@ module Kms
       end
       props
     end
+
+    class Scope
+
+      def order(*args)
+        args = Liquor::Drop.unwrap_scope_arguments(args)
+        parsed_args = args.map do |arg|
+          order_clause = arg.split(' ')
+          if order_clause[0].in? Kms::Product.column_names
+            arg
+          else
+            [ Kms::Variant.table_name, arg ].join('.') # kms_variants.price
+          end
+        end
+        Liquor::DropDelegation.wrap_scope source.order(*parsed_args)
+      end
+    end
   end
 end
