@@ -6,14 +6,12 @@ module Kms
       end
 
       def create
-        product_params[:category_ids] = product_params[:category_ids].split(',') if product_params[:category_ids]
         @product = Product.new(product_params)
         @product.save
         render json: @product
       end
 
       def update
-        product_params[:category_ids] = product_params[:category_ids].split(',') if product_params[:category_ids]
         @product = Product.find(params[:id])
         @product.update_attributes(product_params)
         render json: @product
@@ -33,7 +31,9 @@ module Kms
       protected
 
       def product_params
-        params.require(:product).permit(:name, :description, :category_ids, :seo_title, :seo_keywords, :seo_description, master_attributes: [:price, :image, :id])
+        product_parameters = params.require(:product)
+        product_parameters[:category_ids] = product_parameters[:category_ids].split(',') if product_parameters[:category_ids]
+        product_parameters.permit(:name, :description, :seo_title, :seo_keywords, :seo_description, { master_attributes: [:price, :image, :id], category_ids: [] })
       end
     end
   end
