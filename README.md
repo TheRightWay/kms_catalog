@@ -1,4 +1,5 @@
 ## KMS Catalog
+[![Build Status](https://travis-ci.org/webgradus/kms_catalog.svg?branch=master)](https://travis-ci.org/webgradus/kms_catalog)
 
 Provides catalog functionality for KMS website - Categories, Products, Variants, Product Properties.
 
