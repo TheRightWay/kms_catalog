@@ -9,5 +9,13 @@ module Kms
     it { should have_many(:variants) }
     it { should have_one(:master) }
 
+    describe '#set_position' do
+      it 'sets next position on create' do
+        product1 = FactoryGirl.create(:product)
+        product2 = FactoryGirl.create(:product)
+        expect(product2.position).to be_eql(product1.position + 1)
+      end
+    end
+
   end
 end

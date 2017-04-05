@@ -1,6 +1,10 @@
 ProductsController = ($scope, $state, $cookieStore, Restangular, $stateParams, Alertify, ErrorsService) ->
   $scope.editorOptions =
     filebrowserUploadUrl: '/assets/ckeditor'
+  $scope.productsSortableOptions =
+    orderChanged: (event)->
+      for product, index in event.dest.sortableScope.modelValue
+        product.patch(position: index)
 
   Restangular.all('users').customGET('kms_user').then (current_user) ->
     $scope.currentUser = current_user

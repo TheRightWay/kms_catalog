@@ -2,7 +2,7 @@ module Kms
   module Catalog
     class ProductsController < ApplicationController
       def index
-        render json: Product.order(:name)
+        render json: Product.order(:position)
       end
 
       def create
@@ -33,7 +33,7 @@ module Kms
       def product_params
         product_parameters = params.require(:product)
         product_parameters[:category_ids] = product_parameters[:category_ids].split(',') if product_parameters[:category_ids]
-        product_parameters.permit(:name, :description, :seo_title, :seo_keywords, :seo_description, { master_attributes: [:price, :image, :id], category_ids: [] })
+        product_parameters.permit(:name, :description, :seo_title, :seo_keywords, :seo_description, :position, { master_attributes: [:price, :image, :id], category_ids: [] })
       end
     end
   end

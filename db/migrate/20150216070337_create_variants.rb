@@ -1,4 +1,4 @@
-class CreateVariants < ActiveRecord::Migration
+class CreateVariants < ActiveRecord::Migration[4.2]
   def change
     create_table :kms_variants do |t|
       t.string :name

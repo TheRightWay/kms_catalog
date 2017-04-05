@@ -9,9 +9,10 @@
       .widget-body.no-padding
         .table-responsive
           table.table
-            tbody
-              tr ng-repeat="product in products"
+            tbody as-sortable="productsSortableOptions" ng-model="products"
+              tr ng-repeat="product in products" as-sortable-item=""
                 td style="width: 70%"
+                  i.fa.fa-bars as-sortable-item-handle="" &nbsp;
                   | {{ product.name }}
                 td style="width: 20%"
                   | {{ product.master.price }}

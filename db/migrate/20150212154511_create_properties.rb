@@ -1,4 +1,4 @@
-class CreateProperties < ActiveRecord::Migration
+class CreateProperties < ActiveRecord::Migration[4.2]
   def change
     create_table :kms_properties do |t|
       t.string :name

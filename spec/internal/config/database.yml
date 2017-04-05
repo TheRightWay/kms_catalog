@@ -1,6 +1,6 @@
 test:
   adapter:  postgresql
-  database: kms_shop_test
+  database: kms_catalog_test
   username: postgres
   password: hs,fgbkf
   host: localhost

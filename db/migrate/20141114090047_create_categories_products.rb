@@ -1,4 +1,4 @@
-class CreateCategoriesProducts < ActiveRecord::Migration
+class CreateCategoriesProducts < ActiveRecord::Migration[4.2]
   def change
     create_table :kms_categories_products, id: false do |t|
       t.integer :category_id

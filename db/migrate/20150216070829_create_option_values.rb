@@ -1,4 +1,4 @@
-class CreateOptionValues < ActiveRecord::Migration
+class CreateOptionValues < ActiveRecord::Migration[4.2]
   def change
     create_table :kms_option_values do |t|
       t.references :option_type, index: true

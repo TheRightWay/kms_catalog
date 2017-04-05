@@ -12,4 +12,4 @@ gemspec
 gem 'kms', github: 'webgradus/kms'
 
 # To use a debugger
-# gem 'byebug', group: [:development, :test]
+gem 'byebug', group: [:development, :test]

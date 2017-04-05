@@ -4,6 +4,7 @@ module Kms
     extend FriendlyId
     include Kms::Permalinkable
     include Kms::CompileTemplates
+    #include Kms::Positioned
     has_and_belongs_to_many :categories
     has_many :properties, dependent: :destroy
 
@@ -24,6 +25,11 @@ module Kms
     accepts_nested_attributes_for :master
 
     after_initialize :init_master
+
+    def set_position
+      max = Kms::Product.maximum(:position)
+      self.position = max ? max + 1 : 0
+    end
 
     protected
 

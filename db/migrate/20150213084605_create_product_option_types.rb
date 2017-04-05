@@ -1,4 +1,4 @@
-class CreateProductOptionTypes < ActiveRecord::Migration
+class CreateProductOptionTypes < ActiveRecord::Migration[4.2]
   def change
     create_table :kms_product_option_types do |t|
       t.references :product, index: true

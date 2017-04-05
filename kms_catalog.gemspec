@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "spec/factories/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency 'kms', ">= 0.6.0"
+  s.add_dependency 'kms', ">= 0.9.0"
   s.add_dependency 'friendly_id', '~> 5.0'
   s.add_dependency 'babosa'
   s.add_dependency 'carrierwave'
