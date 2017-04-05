@@ -4,6 +4,7 @@ require 'bundler/setup'
 require 'combustion'
 
 Combustion.initialize! :all
+require 'shoulda/matchers'
 
 require 'rspec/rails'
 require 'factory_girl_rails'
@@ -20,3 +21,13 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false
 end
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    # Choose a test framework:
+    with.test_framework :rspec
+
+    # Or, choose the following (which implies all of the above):
+    with.library :rails
+  end
+end
+
