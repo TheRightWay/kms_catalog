@@ -1,7 +1,7 @@
 test:
   adapter:  postgresql
-  database: kms_catalog_test
+  database: kms_test
   username: postgres
-  password: hs,fgbkf
+  password:
+  encoding: utf-8
   host: localhost
-  encoding: utf8

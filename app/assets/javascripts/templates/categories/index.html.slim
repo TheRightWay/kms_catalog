@@ -1,4 +1,4 @@
-.row
+.row ng-show="categories.length"
   .col-lg-12
     .widget
       .widget-header
@@ -20,3 +20,14 @@
                       i.fa.fa-pencil
                     a.btn.btn-sm.btn-danger ng-click="destroy(category)"
                       i.fa.fa-times
+.row ng-show="!categories.length"
+  .center-block
+    .jumbotron.vertical-center.text-center
+      .container
+        h1
+          span.fa-stack.fa-lg
+            i.fa.fa-circle.fa-stack-2x
+            i.fa.fa-list.fa-stack-1x
+        p = I18n.t(:categories_description)
+        p
+          a.btn.btn-primary.btn-lg ui-sref="categories.new" role="button" = I18n.t(:create_first_category)

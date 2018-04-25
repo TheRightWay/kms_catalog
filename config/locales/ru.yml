@@ -1,10 +1,12 @@
 ru:
   catalog: "Каталог"
   new_category: "Новая Категория"
+  create_first_category: "Создать первую категорию"
   add_category: "Добавить категорию"
   edit_category: "Редактирование категории"
   update_category: "Обновить категорию"
   new_product: "Новый Продукт"
+  create_first_product: "Создать первый продукт"
   add_product: "Добавить продукт"
   edit_product: "Редактирование продукта"
   update_product: "Обновить продукт"
@@ -19,6 +21,8 @@ ru:
   type_group_name_for_properties_placeholder: "Введите название группы для группировки свойств..."
   or_select_from_list_placeholder: "... или выберите из списка"
   select_option_type_from_list_placeholder: "Выберите из списка товарную опцию"
+  categories_description: "Категории это группы схожих продуктов. Например, 'Галстуки', 'Кружки' и тд."
+  products_description: "Каждый Продукт имеет Свойства, а так же может быть представлен несколькими Вариантами в зависимости от значений Товарных Опций"
   liquor_help:
     variables:
       categories:

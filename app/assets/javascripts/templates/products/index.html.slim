@@ -1,4 +1,4 @@
-.row
+.row ng-show="products.length"
   .col-lg-12
     .widget
       .widget-header
@@ -22,3 +22,14 @@
                       i.fa.fa-pencil
                     a.btn.btn-sm.btn-danger ng-click="destroy(product)"
                       i.fa.fa-times
+.row ng-show="!products.length"
+  .center-block
+    .jumbotron.vertical-center.text-center
+      .container
+        h1
+          span.fa-stack.fa-lg
+            i.fa.fa-circle.fa-stack-2x
+            i.fa.fa-barcode.fa-stack-1x
+        p = I18n.t(:products_description)
+        p
+          a.btn.btn-primary.btn-lg ui-sref="products.new" role="button" = I18n.t(:create_first_product)
