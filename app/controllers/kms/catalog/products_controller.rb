@@ -7,14 +7,20 @@ module Kms
 
       def create
         @product = Product.new(product_params)
-        @product.save
-        render json: @product
+        if @product.save
+          render json: @product
+        else
+          render json: { errors: @product.errors.full_messages }.to_json, status: :unprocessable_entity
+        end
       end
 
       def update
         @product = Product.find(params[:id])
-        @product.update_attributes(product_params)
-        render json: @product
+        if @product.update_attributes(product_params)
+          head :no_content
+        else
+          render json: { errors: @product.errors.full_messages }.to_json, status: :unprocessable_entity
+        end
       end
 
       def show

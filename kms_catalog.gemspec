@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'babosa'
   s.add_dependency 'carrierwave'
 
-  s.add_development_dependency 'combustion', '~> 0.5.4'
+  s.add_development_dependency 'combustion', '~> 0.5'
   s.add_development_dependency 'factory_girl_rails'
   s.add_development_dependency 'rspec-rails', '~> 3.5.0'
   s.add_development_dependency 'shoulda-matchers', '~> 3.1'

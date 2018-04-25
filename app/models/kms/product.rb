@@ -4,7 +4,7 @@ module Kms
     extend FriendlyId
     include Kms::Permalinkable
     include Kms::CompileTemplates
-    #include Kms::Positioned
+    include Kms::Positioned
     has_and_belongs_to_many :categories
     has_many :properties, dependent: :destroy
 

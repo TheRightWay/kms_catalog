@@ -49,6 +49,7 @@ ProductsController = ($scope, $state, $cookieStore, Restangular, $stateParams, A
     $scope.store.withHttpConfig({ transformRequest: angular.identity }).post(fd, null, {"Content-Type": undefined}).then (product)->
       $scope.product = product
       $state.go('products.edit', {id: $scope.product.id })
+      Alertify.success('<%= I18n.t(:product_successfully_created) %>')
     ,(response)->
       Alertify.error(ErrorsService.prepareErrorsString(response.data.errors))
 
@@ -65,7 +66,7 @@ ProductsController = ($scope, $state, $cookieStore, Restangular, $stateParams, A
     if $scope.product.master.image.constructor.name == "File"
       fd.append('product[master_attributes][image]', $scope.product.master.image)
     $scope.product.withHttpConfig({ transformRequest: angular.identity }).post('', fd, '', {"Content-Type": undefined}).then ->
-      $state.go('products.edit')
+      Alertify.success('<%= I18n.t(:product_successfully_updated) %>')
     ,(response)->
       Alertify.error(ErrorsService.prepareErrorsString(response.data.errors))
 

@@ -21,6 +21,8 @@ ru:
   type_group_name_for_properties_placeholder: "Введите название группы для группировки свойств..."
   or_select_from_list_placeholder: "... или выберите из списка"
   select_option_type_from_list_placeholder: "Выберите из списка товарную опцию"
+  product_successfully_created: "Продукт успешно создан"
+  product_successfully_updated: "Продукт успешно обновлен"
   categories_description: "Категории это группы схожих продуктов. Например, 'Галстуки', 'Кружки' и тд."
   products_description: "Каждый Продукт имеет Свойства, а так же может быть представлен несколькими Вариантами в зависимости от значений Товарных Опций"
   liquor_help:
@@ -48,6 +50,12 @@ ru:
           variants: 'Варианты'
           properties: 'Свойства'
   activerecord:
+    errors:
+      models:
+        kms/master_variant:
+          attributes:
+            product:
+              required: 'не может быть пустым'
     models:
       kms/category:
         one: "Категория"

@@ -21,6 +21,8 @@ en:
   type_group_name_for_properties_placeholder: "Type group/tag name for grouping properties..."
   or_select_from_list_placeholder: "... or select from list"
   select_option_type_from_list_placeholder: "Select option type from list"
+  product_successfully_created: "Product successfully created"
+  product_successfully_updated: "Product successfully updated"
   categories_description: "Categories are groups of similar products like 'Ties', 'Mugs' and etc."
   products_description: "Each Product has Properties and also may be represented with several Variants depending on Option Types values"
   liquor_help:
@@ -49,6 +51,12 @@ en:
           properties: 'Properties'
 
   activerecord:
+    errors:
+      models:
+        kms/master_variant:
+          attributes:
+            product:
+              required: 'is required'
     models:
       kms/category:
         one: "Category"
